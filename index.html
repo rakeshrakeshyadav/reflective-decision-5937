@@ -104,14 +104,11 @@
       }
 
       /* promo-Section */
-      #refer{
-        border:2px solid red;
-        background-color:#FFFFFF;
-        height: 377px;
-      }
+
       #earn{
         margin:auto;
-        border:1px solid purple;
+        margin-top:30px;
+        margin-bottom:20px;
         width:70%;
         display:grid;
         grid-template-columns: repeat(2,1fr);
@@ -119,21 +116,169 @@
       }
       #earn>div{
         margin:auto;
-        border:1px solid blue;
-        height:200px;
-        width:90%;
+        height:300px;
+        padding:10px;
+        width:95%;
       }
       #referandearn{
         display: grid;
         grid-template-columns: repeat(1,1fr);
-        grid-template-rows:70% 30%;
+        grid-template-rows:80% 20%;
+        border-radius: 20px;
+    }
+      #referandearn>div:nth-child(1){
+        display:grid;
+        grid-template-columns: 70% 30%;;
+        grid-template-rows: repeat(1,100%);
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
       }
-      #referandearn>div{
-        border:1px solid black
+      #referandearn>div:nth-child(1)>div>h3,p{
+        padding:20px;
+      }
+      #referandearn>div:nth-child(1)>div img{
+        width:100%;
+        height:100%;
+      }
+      #referandearn>div+div{
+        padding:10px;
+        display:flex;
+        gap:10px;
+        align-items: center;
+        font-weight: bold;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+      }
+      
+      #coupon{
+        
+        display: grid;
+        grid-template-columns:70% 30%;
+        grid-template-rows: 100%;
+        
+      }
+      #coupon>div{
+        padding-top:40px;
+        padding-left: 20px;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+
+
+      }
+      #coupon>div:nth-child(1){
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+
+          
+    }
+    #coupon>div:nth-child(2){
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+
+      }
+      #coupon>div+div>img{
+        padding:40px 0px;
+        width:100%;
+        height:70%;
+      }
+      .coupon-code{
+        padding:10px;
+        text-align: center;
+        width:60%;
+        border:1px dashed #B9B6B6;
+        font-size: 15px;;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+        color:#B9B6B6;
+      }
+      .coupon-code+p{
+        margin-left:-17px;
+        margin-top:20px;
+        font-size: 25px;
+        font-weight: bolder;
+        color:green;
+      }
+      #coupon>div>h3{
+        font-size: 30px;
+        font-family:Arial, Helvetica, sans-serif ;
+      }
+      #coupon>div>h3+p{
+        margin-left:-17px;
+        font-size: 20px;
+      }
+      /* ads */
+      #ads{
+      
+        background-color:#F5F5F5;
+      }
+      #ads>#ads-images{
+        
+        width:75%;
+        margin:auto;
+        display:grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(2,auto);
+        gap:10px;
+      }
+      #ads-images>div{
+        margin:auto;
+      }
+      #ads-images>div img{
+        width:100%;
+        height: auto;
       }
 
-      
-      
+      /* Offers */
+    #offers{
+        padding:40px;
+        background-color: #ffffff;
+    }
+    #offers>h4{
+        font-family: Arial, Helvetica, sans-serif;
+        padding:0px 0px 0px 240px;
+    }
+    #offers-img{
+        width: 70%;
+        margin: auto;
+        display:flex;
+    }
+    #offers-img>div{
+        width:33%;
+        margin:auto;
+    }
+    #offers-img>div>a>img{
+        margin-left: -5px;;
+        width:320px;
+        height:200px;
+    }
+    #aboutUs{
+        text-align: center;
+        color:#666666;
+        background-color: #F5F5F5;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    #aboutUsNav{
+        margin:auto;
+        border:1px solid red;
+        display:grid;
+        grid-template-columns: repeat(1,1fr);
+        gap:20px;
+        padding: 20px 0px;
+        color:#666666;
+        font-size: 15px;
+        background-color: #F5F5F5;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+     
+    }
+    #aboutUsNav>div{
+        margin:auto;
+        width:20%;
+        text-align: center;
+
+    }
+
 
       /* mid-section */
       #mid-section {
@@ -148,15 +293,14 @@
       }
       #details>div>h3{
         margin-top: 20px;
-        margin-bottom:20px;;
-       
+        margin-bottom:20px;
+        padding-left: 20px;
       }
       
-
       /* Footer */
       #footer {
         height: 331px;
-        border: 1px solid blue;
+       
       }
       #footer > div:nth-child(2) {
         margin-top: 20px;
@@ -240,15 +384,61 @@
         <div id="earn">
             <div id="referandearn">
                 <div>
-                    
+                    <div>
+                        <h3>Do your friends like a weekend getaway?</h3>
+                        <p>You earn 1200 in Z-Points. Your friend gets 40% off on first booking</p>
+                    </div>
+                    <div><img src="https://zoomcar-assets.zoomcar.com/images/original/1e3becafed3e6151b17c104858b336bb7e076c11.jpeg?1658213048" alt=""></div>
                 </div>
-                <div></div>
+                <div><img src="https://www.zoomcar.com/img/right-arrow-green.svg" alt=""><span>REFER FRIENDS</span></div>
             </div>
             <div id="coupon">
-                <div></div>
-                <div><img src="" alt=""></div>
+                <div>
+                    <h3 class="title">Up to 50% Off </h3>
+                     <p>on your first booking from the app! </p> 
+                     <div class="coupon-code">Use Code: ZOOMAPP</div> 
+                  <p>
+                    Install Zoomcar App now!
+                  </p>
+                </div>
+                <div><img src="https://www.zoomcar.com/img/cellphone.png" alt=""></div>
             </div>
         </div>
+    </div>
+    <div id="ads">
+        <div id="ads-images">
+            <div>
+                <a href="#"><img src="https://zoomcar-assets.zoomcar.com/pictures/original/418d6028cb695a1f4c51e31d190361c03493e257.jpeg?1655973605" alt=""></a>
+            </div>
+            <div>
+                
+                <a href="#"> <img src="https://zoomcar-assets.zoomcar.com/pictures/original/d70e7f58da384df0f3ba169cf19e8e931879c66c.jpeg?1652354515" alt=""></a></div>
+            
+            <div>
+                <a href="#"><img src="https://zoomcar-assets.zoomcar.com/pictures/original/e3dfe0ed91abc29facaf56a327b4498ce4e9b75e.jpeg?1652363808" alt=""></a></div>
+            <div>
+                <a href="#"> <img src="https://zoomcar-assets.zoomcar.com/pictures/original/55c3970a33c8f4d10dd3c9ace39d20e32af5c8ba.jpg?1651758755" alt=""></a></div>
+
+        </div>
+    </div>
+
+    <div id="offers">
+        <h4>OFFERS</h4>
+        <div id="offers-img">
+            <div> <a href="#"> <img src="https://zoomcar-assets.zoomcar.com/photos/original/0d948091d1befad4507bd5710ad03a309f5b5345.jpg?1651837793" alt=""></a></div>
+            <div> <a href="#"> <img src="https://zoomcar-assets.zoomcar.com/photos/original/1d96a8389f06beb050e83374b5e3ac9cb448e54c.jpg?1655705601" alt=""></a></div>
+            <div> <a href="#"> <img src="https://zoomcar-assets.zoomcar.com/photos/original/67aa017f464b45e52f7bc9a206245e5f15f5a316.jpg?1655478529" alt=""></a></div>    
+        </div>
+    </div>
+
+    <div id="aboutUs">
+        <p>About Us <span><i class="fa-solid fa-chevron-down" id="aboutUs"></i></span></p>
+    </div>
+    <div id="aboutUsNav">
+        <div>Zoomcar Team</div>
+        <div>Zoomcar Subscription</div>
+        <div>Zoomcar Blog</div>
+        <div>Careers @ Zoomcar</div>
     </div>
     <div id="mid-section">
         <div id="details">
@@ -337,6 +527,7 @@
     </div>
   </body>
   <script>
+    // side-nav
     let icon = document
       .querySelector("#sideIcon")
       .addEventListener("click", openSideMenu);
