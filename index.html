@@ -253,15 +253,15 @@
         width:320px;
         height:200px;
     }
+    /* About Us */
     #aboutUs{
         text-align: center;
         color:#666666;
         background-color: #F5F5F5;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
     #aboutUsNav{
         margin:auto;
-        border:1px solid red;
+        height:0px;
         display:grid;
         grid-template-columns: repeat(1,1fr);
         gap:20px;
@@ -270,7 +270,7 @@
         font-size: 15px;
         background-color: #F5F5F5;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-     
+        overflow:hidden;
     }
     #aboutUsNav>div{
         margin:auto;
@@ -290,10 +290,10 @@
         margin:auto;
         padding: 10px 30px;
         font-size: 14px;
+        line-height: 20px;;
       }
       #details>div>h3{
         margin-top: 20px;
-        margin-bottom:20px;
         padding-left: 20px;
       }
       
@@ -435,6 +435,7 @@
         <p>About Us <span><i class="fa-solid fa-chevron-down" id="aboutUs"></i></span></p>
     </div>
     <div id="aboutUsNav">
+        <div></div>
         <div>Zoomcar Team</div>
         <div>Zoomcar Subscription</div>
         <div>Zoomcar Blog</div>
@@ -500,17 +501,18 @@
             <div>
             <h3><b>ABOUT ZOOMCAR</b></h3>
             <p>
-                <span
-                >No more worries about petrol mileage, fuel costs, insurance, and
+                
+                No more worries about petrol mileage, fuel costs, insurance, and
                 car breakdowns! Zoomcar has enabled driving convenience for
                 travellers around the country and is fast expanding its reach to
                 cities including Ahmedabad, Bangalore, Chandigarh, Chennai,
                 Coimbatore, Delhi-NCR, Hyderabad, Jaipur, Kochi, Kolkata,
                 Ludhiana, Mangalore, Mumbai, Mysore, Pune, Siliguri and
-                Vizag.<br> Self drive cars from Zoomcar have given
+                Vizag.<br />
+                 Self drive cars from Zoomcar have given
                 customers more control, privacy, and freedom.&nbsp;Book
                 a&nbsp;self drive&nbsp;car in any city you visit with the Zoomcar
-                app on your phone and feel at home wherever you go.&nbsp;</span>
+                app on your phone and feel at home wherever you go.&nbsp;
             </p>
             </div>
         </div>
@@ -548,6 +550,21 @@
         document.querySelector("#side-nav").style.width = "0px";
         flag = false;
       }
+    }
+  </script>
+  <script>
+    document.querySelector("#aboutUs").addEventListener("click",openAboutNav);
+    let isOpen=false;
+    function openAboutNav(){
+        if(isOpen==false){
+            document.querySelector("#aboutUsNav").style.height="200px";
+            isOpen=true;
+        }
+        else{
+            document.querySelector("#aboutUsNav").style.height="0px";
+            isOpen=false;
+        }
+
     }
   </script>
 </html>
