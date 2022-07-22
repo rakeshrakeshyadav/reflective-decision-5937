@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      #navbar {
+        background-color: #000;
+        height: 72px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      #menu,
+      a {
+        display: flex;
+        gap: 40px;
+        font-size: 20px;
+        color: white;
+        text-decoration: none;
+        padding: 10px 30px;
+        justify-content: space-evenly;
+      }
+      .open-slide {
+        display: flex;
+        gap: 20px;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .open-slide img {
+        width: 100%;
+        height: 40px;
+      }
+      #side-nav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #ffffff;
+        overflow-x: hidden;
+        transition: 0.5s;
+      }
+      #side-nav a {
+        color: #111;
+        font-size: 15px;
+      }
+      #side-nav > div {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+      }
+      #side-nav > div > a > i {
+        margin-right: -20px;
+        border: 1px solid green;
+        width: 15px;
+      }
+      /* Top-Section */
+      #top-section {
+        width: 408px;
+        margin: auto;
+        height: auto;
+        line-height: 20px;
+        position: relative;
+        top: -150px;
+      }
+      #top-section div {
+        width: 100%;
+        height: 40px;
+        font-size: 14px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        border: 1px solid green;
+        border-radius: 5px;
+      }
+      #findCars {
+        background-color: green;
+        color: #ffffff;
+        text-align: center;
+      }
+      #container {
+        position: relative;
+        top: 0px;
+        bottom: 0px;
+        bottom: 0px;
+        right: 0px;
+        left: 0px;
+        margin-top: 0px;
+        border: 2px solid red;
+        width: 100%;
+        height: 100vh;
+        display: block;
+      }
+      #container img {
+        width: 100%;
+        height: 700px;
+      }
+
+      /* promo-Section */
+      #refer{
+        border:2px solid red;
+        background-color:#FFFFFF;
+        height: 377px;
+      }
+      #earn{
+        margin:auto;
+        border:1px solid purple;
+        width:70%;
+        display:grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(1,auto);
+      }
+      #earn>div{
+        margin:auto;
+        border:1px solid blue;
+        height:200px;
+        width:90%;
+      }
+      #referandearn{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows:70% 30%;
+      }
+      #referandearn>div{
+        border:1px solid black
+      }
+
+      
+      
+
+      /* mid-section */
+      #mid-section {
+        width:100%;
+        background-color: #F5F5F5;
+      }
+      #details{
+        width:78%;
+        margin:auto;
+        padding: 10px 30px;
+        font-size: 14px;
+      }
+      #details>div>h3{
+        margin-top: 20px;
+        margin-bottom:20px;;
+       
+      }
+      
+
+      /* Footer */
+      #footer {
+        height: 331px;
+        border: 1px solid blue;
+      }
+      #footer > div:nth-child(2) {
+        margin-top: 20px;
+        text-align: center;
+        color: #666666;
+      }
+      #footer > div > img {
+        margin-top: 50px;
+        width: 229px;
+        height: 214px;
+        max-width: 229px;
+      }
+    </style>
+    <script
+      src="https://kit.fontawesome.com/cd5ef3d747.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="navbar">
+      <div class="open-slide">
+        <a href="#">
+          <a href="#"><i class="fa-solid fa-bars" id="sideIcon"></i></a>
+          <img
+            src="data:image/png;base64,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"
+            alt=""
+        /></a>
+      </div>
+      <div id="menu">
+        <div><a href="#">Become a Host</a></div>
+        <div><a href="#">ZMS</a></div>
+        <div><a href="#">Login/Signup</a></div>
+      </div>
+    </div>
+
+    <div id="side-nav">
+      <div>
+        <a href=""
+          ><i class="fa-solid fa-user"></i><span>Login or Signup</span>
+        </a>
+      </div>
+      <div>
+        <a href="#"
+          ><i class="fa-solid fa-location-dot"></i><span>Change City</span>
+        </a>
+      </div>
+      <div>
+        <a href="#">
+          <i class="fa-light fa-memo-pad"></i>
+          <span>Zoomcar Fleet Vehicles Policies</span>
+        </a>
+      </div>
+      <div>
+        <a href="#"
+          ><i class="fa-light fa-memo"></i>
+          <span>Zoomcar Host Vehicles Policies</span>
+        </a>
+      </div>
+      <div>
+        <a href="#"><span>Help & Support</span> </a>
+      </div>
+    </div>
+
+    <div id="container">
+      <img src="https://www.zoomcar.com/img/bg-desktop.png" alt="" />
+
+      <div id="top-section">
+        <form>
+          <div id="rideSelector">
+            <span id="trip">Round Trip &nbsp;</span>
+            <i class="fa-solid fa-chevron-down" id="selectCity"></i>
+          </div>
+          <div placeholder="Pick Up City,Airport, Address or Hotel">
+            <a href="#"></a>
+          </div>
+          <div id="findCars">FIND CARS</div>
+        </form>
+      </div>
+    </div>
+    <div id="referContainer">
+        <div id="earn">
+            <div id="referandearn">
+                <div>
+                    
+                </div>
+                <div></div>
+            </div>
+            <div id="coupon">
+                <div></div>
+                <div><img src="" alt=""></div>
+            </div>
+        </div>
+    </div>
+    <div id="mid-section">
+        <div id="details">
+            <div>
+            <h3><b>SELF DRIVE CAR RENTALS IN BANGALORE</b></h3>
+            <p>
+                Bangalore is a burgeoning cosmopolitan city with a young urban
+                population. Besides the all-inclusive feel, the city is witnessing a
+                shifting culture that calls for an equal focus on work and leisure.
+                Almost every work day ends in a relaxing meal with friends, and
+                frequent road trips are the norm. With youngsters increasingly
+                viewing driving as a pleasure rather than a chore, self drive car
+                rentals have emerged as the answer to a prayer.
+            </p>
+            </div>
+
+            <div>
+            <h3><b>CAR RENTAL IN BANGALORE</b></h3>
+            <p>
+                If you love cars, but find it hard to identify one which is perfect
+                for you, Zoomcar serves as an interesting option. We make it
+                possible for you to pick your car based on your travelling needs.
+                While small cars allow you to manoeuvre through city traffic and are
+                ideal for a daily commute, sedans and SUV’s offer more comfort. They
+                are well suited for group travel and can add to the joy of road
+                trips.Take your friends on a memorable trip from Bangalore to Mysore
+                in a spacious SUV from Zoomcar. A definite perk is that
+                Zoomcar&nbsp;comes with limited liability, and relieve you of the
+                financial burden of investing in a four-wheeler while offering the
+                freedom of having a self driven car at your disposal. &nbsp; When
+                you choose to drive a car in the city, you do away with the hassle
+                of having to coordinate with the drivers who operate traditional car
+                rentals in Bangalore.With Zoomcar you can avoid the need to
+                hire an exorbitantly priced Bangalore airport cab . Bangalore airport boasts of a Zoomcar parking lot where you can
+                opt for a car rental in Bangalore without driver as soon as you get
+                off your flight.&nbsp;Indulge your passion for luxury cars and make
+                every a special occasion memorable by opting to drive a slick luxury
+                car yourself. You could opt for it for the sheer pleasure and
+                experience too! &nbsp;
+            </p>
+            </div>
+
+            <div>
+            <h3><b>CAR ON RENT IN BANGALORE</b></h3>
+            <p>
+                Your experience with Zoomcar begins with the convenience of online
+                booking. The cars listed on our site come with all India permits,
+                Road Side Assistance&nbsp;(RSA), and include vehicle insurance. It
+                is extremely easy to pick the car as there are multiple parking
+                sites across the city. They also prove to be a safe bet for
+                independent, young women who like to be behind the wheel. Whether
+                you need it for a couple of hours or require it over many days, you
+                can choose the perfect self-drive car.Hire a car in Bangalore
+                <span>through the Zoomcar app or online conveniently for tech-enabled booking, tracking and hassle-free payment options.</span>
+                <br />
+            </p>
+            </div>
+
+            <div>
+            <h3><b>ABOUT ZOOMCAR</b></h3>
+            <p>
+                <span
+                >No more worries about petrol mileage, fuel costs, insurance, and
+                car breakdowns! Zoomcar has enabled driving convenience for
+                travellers around the country and is fast expanding its reach to
+                cities including Ahmedabad, Bangalore, Chandigarh, Chennai,
+                Coimbatore, Delhi-NCR, Hyderabad, Jaipur, Kochi, Kolkata,
+                Ludhiana, Mangalore, Mumbai, Mysore, Pune, Siliguri and
+                Vizag.<br> Self drive cars from Zoomcar have given
+                customers more control, privacy, and freedom.&nbsp;Book
+                a&nbsp;self drive&nbsp;car in any city you visit with the Zoomcar
+                app on your phone and feel at home wherever you go.&nbsp;</span>
+            </p>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div>
+        <img
+          src="https://www.zoomcar.com/build/6b51f1464b17dbb1d002f16e26572662.png"
+          alt=""
+        />
+      </div>
+      <div>© Copyright 2022 Zoomcar India Private Ltd. All rights reserved</div>
+    </div>
+  </body>
+  <script>
+    let icon = document
+      .querySelector("#sideIcon")
+      .addEventListener("click", openSideMenu);
+
+    let closeNav = document
+      .querySelector("#container")
+      .addEventListener("click", closeSideMenu);
+
+    let flag = false;
+
+    function openSideMenu() {
+      document.querySelector("#side-nav").style.width = "400px";
+      flag = true;
+    }
+
+    function closeSideMenu() {
+      if (flag == true) {
+        document.querySelector("#side-nav").style.width = "0px";
+        flag = false;
+      }
+    }
+  </script>
+</html>
