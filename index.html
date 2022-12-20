@@ -1,569 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      * {
-        margin: 0px;
-        padding: 0px;
-      }
-      #navbar {
-        background-color: #000;
-        height: 72px;
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-      }
-
-      #menu,
-      a {
-        display: flex;
-        gap: 40px;
-        font-size: 20px;
-        color: white;
-        text-decoration: none;
-        padding: 10px 30px;
-        justify-content: space-evenly;
-      }
-      .open-slide {
-        display: flex;
-        gap: 20px;
-        justify-content: space-around;
-        align-items: center;
-      }
-      .open-slide img {
-        width: 100%;
-        height: 40px;
-      }
-      #side-nav {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #ffffff;
-        overflow-x: hidden;
-        transition: 0.5s;
-      }
-      #side-nav a {
-        color: #111;
-        font-size: 15px;
-      }
-      #side-nav > div {
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-      }
-      #side-nav > div > a > i {
-        margin-right: -20px;
-        border: 1px solid green;
-        width: 15px;
-      }
-      /* Top-Section */
-      #top-section {
-        width: 408px;
-        margin: auto;
-        height: auto;
-        line-height: 20px;
-        position: relative;
-        top: -150px;
-      }
-      #top-section div {
-        width: 100%;
-        height: 40px;
-        font-size: 14px;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        border: 1px solid green;
-        border-radius: 5px;
-      }
-      #findCars {
-        background-color: green;
-        color: #ffffff;
-        text-align: center;
-      }
-      #container {
-        position: relative;
-        top: 0px;
-        bottom: 0px;
-        bottom: 0px;
-        right: 0px;
-        left: 0px;
-        margin-top: 0px;
-        width: 100%;
-        height: 100vh;
-        display: block;
-      }
-      #container img {
-        width: 100%;
-        height: 700px;
-      }
-
-      /* promo-Section */
-
-      #earn{
-        margin:auto;
-        margin-top:30px;
-        margin-bottom:20px;
-        width:70%;
-        display:grid;
-        grid-template-columns: repeat(2,1fr);
-        grid-template-rows: repeat(1,auto);
-      }
-      #earn>div{
-        margin:auto;
-        height:300px;
-        padding:10px;
-        width:95%;
-      }
-      #referandearn{
-        display: grid;
-        grid-template-columns: repeat(1,1fr);
-        grid-template-rows:80% 20%;
-        border-radius: 20px;
-    }
-      #referandearn>div:nth-child(1){
-        display:grid;
-        grid-template-columns: 70% 30%;;
-        grid-template-rows: repeat(1,100%);
-        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-        border-top-right-radius: 8px;
-        border-top-left-radius: 8px;
-      }
-      #referandearn>div:nth-child(1)>div>h3,p{
-        padding:20px;
-      }
-      #referandearn>div:nth-child(1)>div img{
-        width:100%;
-        height:100%;
-      }
-      #referandearn>div+div{
-        padding:10px;
-        display:flex;
-        gap:10px;
-        align-items: center;
-        font-weight: bold;
-        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-        border-bottom-right-radius: 8px;
-        border-bottom-left-radius: 8px;
-      }
-      
-      #coupon{
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self Drive Car Rentals | Rent a Car | Car Hire @ Zoomcar</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <link href="https://www.zoomcar.com/fav/favicon.png" rel="shortcut icon" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</head>
+<body>
+    <nav class="navbar" id="mainNav">
         
-        display: grid;
-        grid-template-columns:70% 30%;
-        grid-template-rows: 100%;
-        
-      }
-      #coupon>div{
-        padding-top:40px;
-        padding-left: 20px;
-        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-
-
-      }
-      #coupon>div:nth-child(1){
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-
-          
-    }
-    #coupon>div:nth-child(2){
-        border-bottom-right-radius: 10px;
-        border-top-right-radius: 10px;
-
-      }
-      #coupon>div+div>img{
-        padding:40px 0px;
-        width:100%;
-        height:70%;
-      }
-      .coupon-code{
-        padding:10px;
-        text-align: center;
-        width:60%;
-        border:1px dashed #B9B6B6;
-        font-size: 15px;;
-        font-weight: bold;
-        font-family: Arial, Helvetica, sans-serif;
-        color:#B9B6B6;
-      }
-      .coupon-code+p{
-        margin-left:-17px;
-        margin-top:20px;
-        font-size: 25px;
-        font-weight: bolder;
-        color:green;
-      }
-      #coupon>div>h3{
-        font-size: 30px;
-        font-family:Arial, Helvetica, sans-serif ;
-      }
-      #coupon>div>h3+p{
-        margin-left:-17px;
-        font-size: 20px;
-      }
-      /* ads */
-      #ads{
-      
-        background-color:#F5F5F5;
-      }
-      #ads>#ads-images{
-        
-        width:75%;
-        margin:auto;
-        display:grid;
-        grid-template-columns: repeat(2,1fr);
-        grid-template-rows: repeat(2,auto);
-        gap:10px;
-      }
-      #ads-images>div{
-        margin:auto;
-      }
-      #ads-images>div img{
-        width:100%;
-        height: auto;
-      }
-
-      /* Offers */
-    #offers{
-        padding:40px;
-        background-color: #ffffff;
-    }
-    #offers>h4{
-        font-family: Arial, Helvetica, sans-serif;
-        padding:0px 0px 0px 240px;
-    }
-    #offers-img{
-        width: 70%;
-        margin: auto;
-        display:flex;
-    }
-    #offers-img>div{
-        width:33%;
-        margin:auto;
-    }
-    #offers-img>div>a>img{
-        margin-left: -5px;;
-        width:320px;
-        height:200px;
-    }
-    /* About Us */
-    #aboutUs{
-        text-align: center;
-        color:#666666;
-        background-color: #F5F5F5;
-    }
-    #aboutUsNav{
-        margin:auto;
-        height:0px;
-        display:grid;
-        grid-template-columns: repeat(1,1fr);
-        gap:20px;
-        padding: 20px 0px;
-        color:#666666;
-        font-size: 15px;
-        background-color: #F5F5F5;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        overflow:hidden;
-    }
-    #aboutUsNav>div{
-        margin:auto;
-        width:20%;
-        text-align: center;
-
-    }
-
-
-      /* mid-section */
-      #mid-section {
-        width:100%;
-        background-color: #F5F5F5;
-      }
-      #details{
-        width:78%;
-        margin:auto;
-        padding: 10px 30px;
-        font-size: 14px;
-        line-height: 20px;;
-      }
-      #details>div>h3{
-        margin-top: 20px;
-        padding-left: 20px;
-      }
-      
-      /* Footer */
-      #footer {
-        height: 331px;
-       
-      }
-      #footer > div:nth-child(2) {
-        margin-top: 20px;
-        text-align: center;
-        color: #666666;
-      }
-      #footer > div > img {
-        margin-top: 50px;
-        width: 229px;
-        height: 214px;
-        max-width: 229px;
-      }
-    </style>
-    <script
-      src="https://kit.fontawesome.com/cd5ef3d747.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <div id="navbar">
-      <div class="open-slide">
-        <a href="#">
-          <a href="#"><i class="fa-solid fa-bars" id="sideIcon"></i></a>
-          <img
-            src="data:image/png;base64,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"
-            alt=""
-        /></a>
-      </div>
-      <div id="menu">
-        <div><a href="#">Become a Host</a></div>
-        <div><a href="#">ZMS</a></div>
-        <div><a href="#">Login/Signup</a></div>
-      </div>
-    </div>
-
-    <div id="side-nav">
-      <div>
-        <a href=""
-          ><i class="fa-solid fa-user"></i><span>Login or Signup</span>
-        </a>
-      </div>
-      <div>
-        <a href="#"
-          ><i class="fa-solid fa-location-dot"></i><span>Change City</span>
-        </a>
-      </div>
-      <div>
-        <a href="#">
-          <i class="fa-light fa-memo-pad"></i>
-          <span>Zoomcar Fleet Vehicles Policies</span>
-        </a>
-      </div>
-      <div>
-        <a href="#"
-          ><i class="fa-light fa-memo"></i>
-          <span>Zoomcar Host Vehicles Policies</span>
-        </a>
-      </div>
-      <div>
-        <a href="#"><span>Help & Support</span> </a>
-      </div>
-    </div>
-
-    <div id="container">
-      <img src="https://www.zoomcar.com/img/bg-desktop.png" alt="" />
-
-      <div id="top-section">
-        <form>
-          <div id="rideSelector">
-            <span id="trip">Round Trip &nbsp;</span>
-            <i class="fa-solid fa-chevron-down" id="selectCity"></i>
-          </div>
-          <div placeholder="Pick Up City,Airport, Address or Hotel">
-            <a href="#"></a>
-          </div>
-          <div id="findCars">FIND CARS</div>
-        </form>
-      </div>
-    </div>
-    <div id="referContainer">
-        <div id="earn">
-            <div id="referandearn">
-                <div>
-                    <div>
-                        <h3>Do your friends like a weekend getaway?</h3>
-                        <p>You earn 1200 in Z-Points. Your friend gets 40% off on first booking</p>
+    </nav>
+    <div id="backgroundImg">
+        <section class="search">
+     <!-- back-ground image and form//upper part -->
+            <form>
+            <div id="ride-selection">
+                <div id="road" onclick="changeToRoad()">
+                    <div id="div-content">
+                    <div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmd0o37WqMvSONzvAKMis6yj2O2jAUvXeF5w&usqp=CAU"></div>
+                    <div style="font-stretch:ultra-expanded">Round Trip</div>
                     </div>
-                    <div><img src="https://zoomcar-assets.zoomcar.com/images/original/1e3becafed3e6151b17c104858b336bb7e076c11.jpeg?1658213048" alt=""></div>
                 </div>
-                <div><img src="https://www.zoomcar.com/img/right-arrow-green.svg" alt=""><span>REFER FRIENDS</span></div>
+                <div id="air" onclick="changeToAir()">
+                    <div id="div-content">
+                        <div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlBaog8E36pK6W53G2-wTlR6KxsGibNyZd4g&usqp=CAU"></div>
+                        <div style="font-stretch:ultra-expanded">Airport</div>
+                    </div>
+                </div>
             </div>
-            <div id="coupon">
+            <div id="city-selection">
                 <div>
-                    <h3 class="title">Up to 50% Off </h3>
-                     <p>on your first booking from the app! </p> 
-                     <div class="coupon-code">Use Code: ZOOMAPP</div> 
-                  <p>
-                    Install Zoomcar App now!
-                  </p>
+                    <div id="circle"></div>
+                    <select id="select" required>
+                        <option id="show-airport">Pick Up City, Airport, Address or Hotel</option>
+                        <option value="Pune">Pune</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Delhi">Delhi NCR</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Chennai">Chennai</option>
+                        <option>Air Port</option>
+                    </select>
                 </div>
-                <div><img src="https://www.zoomcar.com/img/cellphone.png" alt=""></div>
             </div>
+            <div class="input-date">
+              <div>
+                <label for="start-date">From</label>
+                <input type="datetime-local" id="start" required>
+              </div> 
+              <div>
+                <label for="end-date">Till</label>
+                <input type="datetime-local" id="end" required>
+              </div>
+            </div>
+            <input type="submit" value="FIND CARS">
+            </form>
+        </section>
+    </div>
+
+    <!-- divs and images//middle part -->
+
+<div id="container">
+   <div id="wh-content">
+     <div id="flex-content">
+        <div><h3>Do your friend like weekend gateway</h3>
+            <p style="margin-top:26px;font-size:17px">You earn 500 in z-point. Your friends get 20% off on first booking</p>
         </div>
-    </div>
-    <div id="ads">
-        <div id="ads-images">
-            <div>
-                <a href="#"><img src="https://zoomcar-assets.zoomcar.com/pictures/original/418d6028cb695a1f4c51e31d190361c03493e257.jpeg?1655973605" alt=""></a>
-            </div>
-            <div>
-                
-                <a href="#"> <img src="https://zoomcar-assets.zoomcar.com/pictures/original/d70e7f58da384df0f3ba169cf19e8e931879c66c.jpeg?1652354515" alt=""></a></div>
-            
-            <div>
-                <a href="#"><img src="https://zoomcar-assets.zoomcar.com/pictures/original/e3dfe0ed91abc29facaf56a327b4498ce4e9b75e.jpeg?1652363808" alt=""></a></div>
-            <div>
-                <a href="#"> <img src="https://zoomcar-assets.zoomcar.com/pictures/original/55c3970a33c8f4d10dd3c9ace39d20e32af5c8ba.jpg?1651758755" alt=""></a></div>
-
+        <div><img src="https://zoomcar-assets.zoomcar.com/images/original/1e3becafed3e6151b17c104858b336bb7e076c11.jpeg?1658213048"></div>
+     </div>
+     <div id="footerImg">
+        <img src="https://www.zoomcar.com/img/right-arrow-green.svg">
+        <div><h3>  Refer Friend</h3></div>
+     </div>
+   </div>
+   <div id="wh-content">
+    <div id="flex-content">
+        <div><h2>Up to 20% off</h2>
+            <p style="font-size:18px; color:grey">on your first booking from the app</p>
+            <div><p  style="color:grey; font-size: 22px; border:1px dashed grey;padding:7px">Use Code : ZOOMNEW</p></div>
         </div>
+        <div><img src="https://www.zoomcar.com/img/cellphone.png"></div>
+     </div>
+     <div><h2 style="color:green">Install Zoomcar App Now</h2></div>
+   </div>
+</div>
+
+    <!-- promo cards//third part -->
+
+<div id="promo">
+ <div id="promo-div">
+    <a href="#mainNav">
+    <div>
+        <img src="https://zoomcar-assets.zoomcar.com/pictures/original/d70e7f58da384df0f3ba169cf19e8e931879c66c.jpeg?1652354515">
+    </div>
+    </a>
+    <a href="#mainNav">
+    <div>
+        <img src="https://zoomcar-assets.zoomcar.com/pictures/original/55c3970a33c8f4d10dd3c9ace39d20e32af5c8ba.jpg?1651758755">
+    </div>
+   </a>
+   <a href="#mainNav">
+    <div>
+        <img src="https://zoomcar-assets.zoomcar.com/pictures/original/bf00a1ae4448e84bbd2ef285970c2cc8527dc305.jpg?1660131373">
+    </div>
+   </a>
+   <a href="#mainNav">
+    <div>
+        <img src="https://zoomcar-assets.zoomcar.com/pictures/original/e3dfe0ed91abc29facaf56a327b4498ce4e9b75e.jpeg?1652363808">
+    </div>
+   </a>
+</div>
+</div>
+<div id="book"><button>Book Now</button></div>
+<!-- offer part//4th part -->
+
+<div id="offers">
+    <h4>OFFERS</h4>
+    <img src="https://zoomcar-assets.zoomcar.com/photos/original/67aa017f464b45e52f7bc9a206245e5f15f5a316.jpg?1655478529">
+</div>
+<!-- footers//bottom part -->
+
+<div id="about">
+    <div>About Us</div>
+</div>
+<div id="details">
+    <div id="detail-write">
+    <div>
+    <h3><b>SELF DRIVE CAR RENTALS</b></h3>
+    <p>
+        Besides the all-inclusive feel, the city is witnessing a
+        shifting culture that calls for an equal focus on work and leisure.
+        Almost every work day ends in a relaxing meal with friends, and
+        frequent road trips are the norm. With youngsters increasingly
+        viewing driving as a pleasure rather than a chore, self drive car
+        rentals have emerged as the answer to a prayer.
+    </p>
     </div>
 
-    <div id="offers">
-        <h4>OFFERS</h4>
-        <div id="offers-img">
-            <div> <a href="#"> <img src="https://zoomcar-assets.zoomcar.com/photos/original/0d948091d1befad4507bd5710ad03a309f5b5345.jpg?1651837793" alt=""></a></div>
-            <div> <a href="#"> <img src="https://zoomcar-assets.zoomcar.com/photos/original/1d96a8389f06beb050e83374b5e3ac9cb448e54c.jpg?1655705601" alt=""></a></div>
-            <div> <a href="#"> <img src="https://zoomcar-assets.zoomcar.com/photos/original/67aa017f464b45e52f7bc9a206245e5f15f5a316.jpg?1655478529" alt=""></a></div>    
-        </div>
+    <div>
+    <h3><b>CAR RENTAL IN</b></h3>
+    <p>
+        If you love cars, but find it hard to identify one which is perfect
+        for you, Zoomcar serves as an interesting option. We make it
+        possible for you to pick your car based on your travelling needs.
+        While small cars allow you to manoeuvre through city traffic and are
+        ideal for a daily commute, sedans and SUV’s offer more comfort. They
+        are well suited for group travel and can add to the joy of road
+        trips.Take your friends on a memorable trip from to your favourite place.
+        in a spacious SUV from Zoomcar. A definite perk is that
+        Zoomcar&nbsp;comes with limited liability, and relieve you of the
+        financial burden of investing in a four-wheeler while offering the
+        freedom of having a self driven car at your disposal. &nbsp; When
+        you choose to drive a car in the city, you do away with the hassle
+        of having to coordinate with the drivers who operate traditional car
+        rentals.With Zoomcar you can avoid the need to
+        hire an exorbitantly priced airport cab . Airport boasts of a Zoomcar parking lot where you can
+        opt for a car rental in cities without driver as soon as you get
+        off your flight.&nbsp;Indulge your passion for luxury cars and make
+        every a special occasion memorable by opting to drive a slick luxury
+        car yourself. You could opt for it for the sheer pleasure and
+        experience too! &nbsp;
+    </p>
     </div>
 
-    <div id="aboutUs">
-        <p>About Us <span id="downArrow"><i class="fa-solid fa-chevron-down" ></i></span></p>
+    <div>
+    <h3><b>CAR ON RENT IN</b></h3>
+    <p>
+        Your experience with Zoomcar begins with the convenience of online
+        booking. The cars listed on our site come with all India permits,
+        Road Side Assistance&nbsp;(RSA), and include vehicle insurance. It
+        is extremely easy to pick the car as there are multiple parking
+        sites across the city. They also prove to be a safe bet for
+        independent, young women who like to be behind the wheel. Whether
+        you need it for a couple of hours or require it over many days, you
+        can choose the perfect self-drive car.Hire a car.
+        <span>through the Zoomcar app or online conveniently for tech-enabled booking, tracking and hassle-free payment options.</span>
+        <br />
+    </p>
     </div>
-    <div id="aboutUsNav">
-        <div></div>
-        <div>Zoomcar Team</div>
-        <div>Zoomcar Subscription</div>
-        <div>Zoomcar Blog</div>
-        <div>Careers @ Zoomcar</div>
+
+    <div>
+    <h3><b>ABOUT ZOOMCAR</b></h3>
+    <p>
+        
+        No more worries about petrol mileage, fuel costs, insurance, and
+        car breakdowns! Zoomcar has enabled driving convenience for
+        travellers around the country and is fast expanding its reach to
+        cities including Ahmedabad, Bangalore, Chandigarh, Chennai,
+        Coimbatore, Delhi-NCR, Hyderabad, Jaipur, Kochi, Kolkata,
+        Ludhiana, Mangalore, Mumbai, Mysore, Pune, Siliguri and
+        Vizag.<br />
+         Self drive cars from Zoomcar have given
+        customers more control, privacy, and freedom.&nbsp;Book
+        a&nbsp;self drive&nbsp;car in any city you visit with the Zoomcar
+        app on your phone and feel at home wherever you go.&nbsp;
+    </p>
     </div>
-    <div id="mid-section">
-        <div id="details">
-            <div>
-            <h3><b>SELF DRIVE CAR RENTALS IN BANGALORE</b></h3>
-            <p>
-                Bangalore is a burgeoning cosmopolitan city with a young urban
-                population. Besides the all-inclusive feel, the city is witnessing a
-                shifting culture that calls for an equal focus on work and leisure.
-                Almost every work day ends in a relaxing meal with friends, and
-                frequent road trips are the norm. With youngsters increasingly
-                viewing driving as a pleasure rather than a chore, self drive car
-                rentals have emerged as the answer to a prayer.
-            </p>
-            </div>
+</div>
+</div>
 
-            <div>
-            <h3><b>CAR RENTAL IN BANGALORE</b></h3>
-            <p>
-                If you love cars, but find it hard to identify one which is perfect
-                for you, Zoomcar serves as an interesting option. We make it
-                possible for you to pick your car based on your travelling needs.
-                While small cars allow you to manoeuvre through city traffic and are
-                ideal for a daily commute, sedans and SUV’s offer more comfort. They
-                are well suited for group travel and can add to the joy of road
-                trips.Take your friends on a memorable trip from Bangalore to Mysore
-                in a spacious SUV from Zoomcar. A definite perk is that
-                Zoomcar&nbsp;comes with limited liability, and relieve you of the
-                financial burden of investing in a four-wheeler while offering the
-                freedom of having a self driven car at your disposal. &nbsp; When
-                you choose to drive a car in the city, you do away with the hassle
-                of having to coordinate with the drivers who operate traditional car
-                rentals in Bangalore.With Zoomcar you can avoid the need to
-                hire an exorbitantly priced Bangalore airport cab . Bangalore airport boasts of a Zoomcar parking lot where you can
-                opt for a car rental in Bangalore without driver as soon as you get
-                off your flight.&nbsp;Indulge your passion for luxury cars and make
-                every a special occasion memorable by opting to drive a slick luxury
-                car yourself. You could opt for it for the sheer pleasure and
-                experience too! &nbsp;
-            </p>
-            </div>
-
-            <div>
-            <h3><b>CAR ON RENT IN BANGALORE</b></h3>
-            <p>
-                Your experience with Zoomcar begins with the convenience of online
-                booking. The cars listed on our site come with all India permits,
-                Road Side Assistance&nbsp;(RSA), and include vehicle insurance. It
-                is extremely easy to pick the car as there are multiple parking
-                sites across the city. They also prove to be a safe bet for
-                independent, young women who like to be behind the wheel. Whether
-                you need it for a couple of hours or require it over many days, you
-                can choose the perfect self-drive car.Hire a car in Bangalore
-                <span>through the Zoomcar app or online conveniently for tech-enabled booking, tracking and hassle-free payment options.</span>
-                <br />
-            </p>
-            </div>
-
-            <div>
-            <h3><b>ABOUT ZOOMCAR</b></h3>
-            <p>
-                
-                No more worries about petrol mileage, fuel costs, insurance, and
-                car breakdowns! Zoomcar has enabled driving convenience for
-                travellers around the country and is fast expanding its reach to
-                cities including Ahmedabad, Bangalore, Chandigarh, Chennai,
-                Coimbatore, Delhi-NCR, Hyderabad, Jaipur, Kochi, Kolkata,
-                Ludhiana, Mangalore, Mumbai, Mysore, Pune, Siliguri and
-                Vizag.<br />
-                 Self drive cars from Zoomcar have given
-                customers more control, privacy, and freedom.&nbsp;Book
-                a&nbsp;self drive&nbsp;car in any city you visit with the Zoomcar
-                app on your phone and feel at home wherever you go.&nbsp;
-            </p>
-            </div>
-        </div>
-      </div>
+<div style="display:flex; justify-content:space-around">
+<div id="footer-img">
+    <img src="https://www.zoomcar.com/build/6b51f1464b17dbb1d002f16e26572662.png"alt=""/>
+</div>
+<div id="mother">
+    <div id="container"></div>
+    <div class="mapouter">
+        <div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.whatismyip-address.com/divi-discount/">divi discount</a><br><a href="https://www.embedgooglemap.net">google maps in iframe</a></div>
     </div>
-    <div id="footer">
-      <div>
-        <img
-          src="https://www.zoomcar.com/build/6b51f1464b17dbb1d002f16e26572662.png"
-          alt=""
-        />
-      </div>
-      <div>© Copyright 2022 Zoomcar India Private Ltd. All rights reserved</div>
-    </div>
-  </body>
-  <script>
-    // side-nav
-    let icon = document
-      .querySelector("#sideIcon")
-      .addEventListener("click", openSideMenu);
+  </div>
+</div>
+  <div id="copyright">© Copyright 2022 Zoomcar India Private Ltd. All rights reserved </div>
+</body>
+<script src="./scripts/index.js"></script>
+</html>
 
-    let closeNav = document
-      .querySelector("#container")
-      .addEventListener("click", closeSideMenu);
 
-    let flag = false;
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/445205b9df.js" crossorigin="anonymous"></script>
 
-    function openSideMenu() {
-      document.querySelector("#side-nav").style.width = "400px";
-      flag = true;
+<script type="module">
+    import { afterLogin, beforeLogin } from "./components/header.js";
+    let user = JSON.parse(localStorage.getItem("current-user")) || null;
+  
+    let navbar = document.getElementById("mainNav");
+  
+    if (user != null) {
+      navbar.innerHTML = afterLogin();
+      document.getElementById("name").innerText = user.name;
+      document.getElementById("uName").innerText = user.name;
+      document.getElementById("email").innerText = user.email;
+      document.getElementById("mob").innerText = user.number;
+      document.getElementById("city").innerText = user.city;
+    } else {
+      navbar.innerHTML = beforeLogin();
     }
-
-    function closeSideMenu() {
-      if (flag == true) {
-        document.querySelector("#side-nav").style.width = "0px";
-        flag = false;
+  
+    let logout = document.getElementById("logout");
+    if (logout) {
+      logout.addEventListener("click", logoutMe);
+    }
+  
+    function logoutMe() {
+      swal({
+        title: "Are you sure?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          localStorage.setItem("current-user", JSON.stringify(null));
+          window.location.href = "login-page.html";
+          swal("You are successfully logout!", {
+            icon: "success",
+          });
+        }
+      });
+    }
+    
+    if (user != null) {
+      let goToProfile = document.getElementById("uName");
+      let goToProfile1 = document.getElementById("logData");
+  
+      goToProfile.addEventListener("click", profile);
+      goToProfile1.addEventListener("click", profile1);
+  
+      function profile() {
+        window.location.href = "profile.html";
+      }
+  
+      function profile1() {
+        window.location.href = "profile.html";
       }
     }
   </script>
-  <script>
-    document.querySelector("#aboutUs").addEventListener("click",openAboutNav);
-    let isOpen=false;
-    function openAboutNav(){
-        if(isOpen==false){
-            document.querySelector("#aboutUsNav").style.height="200px";
-            isOpen=true;
-        }
-        else{
-            document.querySelector("#aboutUsNav").style.height="0px";
-            isOpen=false;
-        }
-
-    }
-  </script>
-</html>
